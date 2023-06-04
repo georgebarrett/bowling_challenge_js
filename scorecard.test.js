@@ -44,6 +44,16 @@ describe('Scorecard', () => {
         expect(scorecard.getTotalScore()).toBe(19);
     });
 
+    it('should return the score of 38 instead of 34 due to spare bonus', () => {
+        scorecard.addFrame(5, 5, 0);
+        scorecard.addFrame(2, 5, 0);
+        scorecard.addFrame(5, 5, 0);
+        scorecard.addFrame(2, 5, 0);
+        calculateScore();
+
+        expect(scorecard.getTotalScore()).toBe(38);
+    });
+
     it('should return 31 instead of 27 due to a strike bonus', () => {
         scorecard.addFrame(2, 5, 0);
         scorecard.addFrame(3, 5, 0);
