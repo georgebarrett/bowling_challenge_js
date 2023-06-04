@@ -82,5 +82,23 @@ describe('Scorecard', () => {
         
         calculateScore();
         expect(scorecard.getTotalScore()).toBe(300);
-    })
-})
+    });
+
+    it("shouldn't return 300 as the game is not over", () => {
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        
+        calculateScore();
+    
+        expect(scorecard.getTotalScore()).toBe(210);
+    });
+});
