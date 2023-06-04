@@ -34,5 +34,13 @@ describe('Scorecard', () => {
 
         expect(scorecard.getFrames()).toEqual([[4, 4, 0], [4, 4, 0], [4, 1, 0]]);
         expect(scorecard.getTotalScore()).toBe(21);  
-    })
+    });
+
+    it('should return the score of 19 instead of 17 after two frames, due to spare bonus', () => {
+        scorecard.addFrame(5, 5, 0);
+        scorecard.addFrame(2, 5, 0);
+        calculateScore();
+
+        expect(scorecard.getTotalScore()).toBe(19);
+    });
 })
