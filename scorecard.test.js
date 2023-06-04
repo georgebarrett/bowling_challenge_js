@@ -36,11 +36,23 @@ describe('Scorecard', () => {
         expect(scorecard.getTotalScore()).toBe(21);  
     });
 
-    it('should return the score of 19 instead of 17 after two frames, due to spare bonus', () => {
+    it('should return the score of 19 instead of 17 due to spare bonus', () => {
         scorecard.addFrame(5, 5, 0);
         scorecard.addFrame(2, 5, 0);
         calculateScore();
 
         expect(scorecard.getTotalScore()).toBe(19);
     });
+
+    it('should return 31 instead of 27 due to a strike bonus', () => {
+        scorecard.addFrame(2, 5, 0);
+        scorecard.addFrame(3, 5, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(2, 1, 0);
+        calculateScore();
+
+        expect(scorecard.getTotalScore()).toBe(31)
+    });
+
+    
 })

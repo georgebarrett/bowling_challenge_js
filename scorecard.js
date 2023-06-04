@@ -19,7 +19,14 @@ class Scorecard {
     }
 
     calculateStrikeBonus() {
-
+        for (let i = 0; i < this.frames.length - 1; i++) {
+            const currentFrame = this.frames[i];
+            const nextFrame = this.frames[i + 1];
+            if (currentFrame[0] === 10) {
+                const sum = nextFrame[0] + nextFrame[1];
+                this.strikeBonusScore += sum;
+            }
+        }
     }
 
     calculateSpareBonus() {
@@ -37,7 +44,7 @@ class Scorecard {
     }
 
     getTotalScore() {
-        return this.basicScore + this.spareBonusScore
+        return this.basicScore + this.spareBonusScore + this.strikeBonusScore;
     }
 
     getFrames() {
