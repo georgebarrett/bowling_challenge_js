@@ -54,5 +54,15 @@ describe('Scorecard', () => {
         expect(scorecard.getTotalScore()).toBe(31)
     });
 
-    
+    it('should return 55 instead of 45 due to a strike bonus', () => {
+        scorecard.addFrame(2, 5, 0);
+        scorecard.addFrame(3, 5, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(1, 1, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(3, 5, 0);
+        calculateScore();
+
+        expect(scorecard.getTotalScore()).toBe(55)
+    });
 })
