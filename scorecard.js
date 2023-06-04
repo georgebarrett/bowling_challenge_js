@@ -7,12 +7,15 @@ class Scorecard {
         this.spareBonusScore = 0;
     }
 
-    addFrame() {
-
+    addFrame(roll1, roll2, roll3) {
+        return this.frames.push([roll1, roll2, roll3]);
     }
 
     calculateBasicScore() {
-
+        this.frames.map((frame) => {
+            const basicFrame = frame[0] + frame[1] + frame[2];
+            this.basicScore += basicFrame;
+        })
     }
 
     calculateStrikeBonus() {
@@ -25,10 +28,10 @@ class Scorecard {
 
     checkPerfectGame() {
 
-    } 
+    }
 
     getTotalScore() {
-        return 0
+        return this.basicScore
     }
 
     getFrames() {
