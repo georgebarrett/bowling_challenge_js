@@ -65,4 +65,22 @@ describe('Scorecard', () => {
 
         expect(scorecard.getTotalScore()).toBe(55)
     });
+
+    it('should return 300 due to a Perfect Game', () => {
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        scorecard.addFrame(10, 0, 0);
+        
+        calculateScore();
+        expect(scorecard.getTotalScore()).toBe(300);
+    })
 })

@@ -40,11 +40,15 @@ class Scorecard {
     }
 
     checkPerfectGame() {
-
+        const allStrikes = this.frames.every((subArray) => {
+            return subArray[0] === 10; 
+        })
+        return allStrikes;
     }
 
     getTotalScore() {
-        return this.basicScore + this.spareBonusScore + this.strikeBonusScore;
+        return (this.checkPerfectGame() && this.frames.length === 12) ?
+            300 : this.basicScore + this.spareBonusScore + this.strikeBonusScore;
     }
 
     getFrames() {
